@@ -10,7 +10,7 @@ Invoke:
 
 ## *NIX
 
-Install these packages as prerequisites: `git,perl,cmake,make,gcc-core,ninja,libtool,openssl`. 
+Install these packages as prerequisites: `git,perl,cmake,make,gcc-core,ninja,libtool,openssl,libssl-devel`. 
 
 Then invoke:
 

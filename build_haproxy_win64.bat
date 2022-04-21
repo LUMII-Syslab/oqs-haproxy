@@ -19,7 +19,7 @@ if not exist setup-x86_64.exe curl.exe -o setup-x86_64.exe https://www.cygwin.co
 if not exist C:\cygwin64\bin setup-x86_64.exe -q --wait --site %CYGWIN_SITE%
 
 :: install additional cygwin packages
-setup-x86_64.exe -q --wait -P git,perl,cmake,make,gcc-core,ninja,libtool,openssl
+setup-x86_64.exe -q --wait -P git,perl,cmake,make,gcc-core,ninja,libtool,openssl,libssl-devel
 
 popd
 
