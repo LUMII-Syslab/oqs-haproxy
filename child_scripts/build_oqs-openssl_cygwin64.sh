@@ -10,7 +10,9 @@
 export SCRIPT_PATH=`pwd`
 
 # liboqs build type variant; maximum portability of image:
-export LIBOQS_BUILD_DEFINES="-DOQS_DIST_BUILD=ON -DOPENSSL_CRYPTO_LIBRARY=crypto -DOPENSSL_ROOT_DIR=${SCRIPT_PATH}/openssl"
+#export LIBOQS_BUILD_DEFINES="-DOQS_DIST_BUILD=ON -DOPENSSL_CRYPTO_LIBRARY=crypto -DOPENSSL_ROOT_DIR=${SCRIPT_PATH}/openssl"
+export LIBOQS_BUILD_DEFINES="-DOQS_DIST_BUILD=ON -DOPENSSL_INCLUDE_DIR=${SCRIPT_PATH}/openssl/include"
+#### ^^^^   OPENSSL_INCLUDE_DIR
 
 # installation path
 export INSTALL_PATH=/oqs/openssl
@@ -21,8 +23,9 @@ if [ -f "$INSTALL_PATH/bin/openssl" ]; then
     exit
 fi
 
-#git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe/openssl.git
-#git clone --branch main https://github.com/open-quantum-safe/liboqs.git
+
+[ ! -d "$SCRIPT_PATH/openssl" ] && git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe/openssl.git
+[ ! -d "$SCRIPT_PATH/liboqs" ] && git clone --branch main https://github.com/open-quantum-safe/liboqs.git
 
 cd $SCRIPT_PATH/liboqs
 mkdir -p build
