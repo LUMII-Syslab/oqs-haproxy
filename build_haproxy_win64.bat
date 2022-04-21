@@ -19,10 +19,11 @@ if not exist setup-x86_64.exe curl.exe -o setup-x86_64.exe https://www.cygwin.co
 if not exist C:\cygwin64\bin setup-x86_64.exe -q --wait --site %CYGWIN_SITE%
 
 :: install additional cygwin packages
-setup-x86_64.exe -q --wait -P git,perl,cmake,make,gcc-core,ninja,libtool
+setup-x86_64.exe -q --wait -P git,perl,cmake,make,gcc-core,ninja,libtool,openssl
 
 popd
 
-pushd child_scripts
-C:\cygwin64\bin\bash --login -c "./build_oqs-openssl_cygwin64.sh"
-popd
+:: === cygwin64 and packages installed ====
+
+:: invoking child scripts (cygwin understands cd in the Windows path syntax; cd is required)
+C:\cygwin64\bin\bash --login -c "cd '%~dp0/child_scripts' && ./build_oqs-openssl_cygwin64.sh"
