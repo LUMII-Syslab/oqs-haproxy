@@ -26,6 +26,7 @@ export LIBOQS_BUILD_DEFINES="-DOQS_DIST_BUILD=ON"
 #### ^^^^   OPENSSL_INCLUDE_DIR
 
 # cloning open-quantum-safe sources
+mkdir -p $BUILD_PATH
 pushd $BUILD_PATH
 export BUILD_PATH=`pwd`
 # ^^^ converting to full path; it will be passed to "cmake" below
