@@ -40,7 +40,7 @@ cd ${BUILD_PATH}/haproxy
 
 if [[ -z "$MAKE_DEFINES" ]] ; then nproc=$(getconf _NPROCESSORS_ONLN) && MAKE_DEFINES="-j $nproc"; fi \
   && make $MAKE_DEFINES \
-    LDFLAGS="-Wl,-L/opt/oqs/lib,-l:liboqs.a,-Bstatic,-L$OPENSSL_INSTALL_PATH/lib,-L$HAPROXY_INSTALL_PATH/lib,-rpath,$OPENSSL_INSTALL_PATH/lib,-rpath,$HAPROXY_INSTALL_PATH/lib" \
+    LDFLAGS="-Wl,-L$OPENSSL_INSTALL_PATH/lib,-L$HAPROXY_INSTALL_PATH/lib,-rpath,$OPENSSL_INSTALL_PATH/lib,-rpath,$HAPROXY_INSTALL_PATH/lib" \
     SSL_INC=$OPENSSL_INSTALL_PATH/include SSL_LIB=$OPENSSL_INSTALL_PATH/lib ${MAKE_ARGS} \
   && make PREFIX=$HAPROXY_INSTALL_PATH install
 exit
