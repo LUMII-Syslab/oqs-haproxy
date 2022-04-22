@@ -22,7 +22,8 @@ if not exist setup-x86_64.exe curl.exe -o setup-x86_64.exe https://www.cygwin.co
 if not exist C:\cygwin64\bin setup-x86_64.exe -q --wait --site %CYGWIN_SITE%
 
 :: install additional cygwin packages
-setup-x86_64.exe -q --wait -P git,perl,cmake,make,gcc-core,ninja,libtool,openssl,libssl-devel
+setup-x86_64.exe -q --wait -P git,perl,cmake,make,gcc-core,ninja,libtool,openssl,libssl-devel,dos2unix
+:: ^^^ dos2unix is needed if git added Windows CR+LF; we need to convert them back to Unix style (for Cygwin bash)
 
 popd
 
@@ -30,4 +31,5 @@ popd
 
 :: invoking child scripts (cygwin understands cd in the Windows path syntax; cd is required)
 mkdir %BUILD_PATH%
-echo C:\cygwin64\bin\bash --login -c "cd '%~dp0' && ./build_openssl_cygwin64.sh %BUILD_PATH% %INSTALL_PATH%"
+dos2unix ./build_openssl_cygwin64.sh
+C:\cygwin64\bin\bash --login -c "cd '%~dp0' && ./build_openssl_cygwin64.sh %BUILD_PATH% %INSTALL_PATH%"
