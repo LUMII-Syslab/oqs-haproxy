@@ -8,6 +8,9 @@
 
 set CYGWIN_INSTALLER_PATH=cygwin_installer
 set CYGWIN_SITE=https://ftp.fsn.hu/pub/cygwin/
+set BUILD_PATH=build
+set INSTALL_PATH=/opt/oqs
+:: ^^^ the install path inside Cygwin; variant: /usr/local
 
 mkdir %CYGWIN_INSTALLER_PATH%
 pushd %CYGWIN_INSTALLER_PATH%
@@ -26,4 +29,5 @@ popd
 :: === cygwin64 and packages installed ====
 
 :: invoking child scripts (cygwin understands cd in the Windows path syntax; cd is required)
-C:\cygwin64\bin\bash --login -c "cd '%~dp0/child_scripts' && ./build_oqs-openssl_cygwin64.sh"
+mkdir %BUILD_PATH%
+echo C:\cygwin64\bin\bash --login -c "cd '%~dp0/build' && ./build_openssl_cygwin64.sh %BUILD_PATH% %INSTALL_PATH%"
