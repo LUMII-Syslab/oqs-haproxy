@@ -41,7 +41,9 @@ cd build && if [[ -z "$MAKE_DEFINES" ]] ; then nproc=$(getconf _NPROCESSORS_ONLN
 popd
 
 pushd $BUILD_PATH/openssl
-LDFLAGS="-Wl,-rpath -Wl,$INSTALL_PATH/lib" ./Configure Cygwin-x86_64 -lm --prefix=$INSTALL_PATH && if [[ -z "$MAKE_DEFINES" ]] ; then nproc=$(getconf _NPROCESSORS_ONLN) && MAKE_DEFINES="-j $nproc"; fi && make $MAKE_DEFINES && make install
+LDFLAGS="-Wl,-rpath -Wl,$INSTALL_PATH/lib" ./Configure Cygwin-x86_64 -lm --prefix=$INSTALL_PATH \
+  && if [[ -z "$MAKE_DEFINES" ]] ; then nproc=$(getconf _NPROCESSORS_ONLN) && MAKE_DEFINES="-j $nproc"; fi \
+  && make $MAKE_DEFINES && make install
 ## ^^^was: make install_sw
 popd
 
