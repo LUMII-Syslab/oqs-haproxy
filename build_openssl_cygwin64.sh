@@ -16,7 +16,7 @@ if [ -z "$2" ]; then
     exit
 fi
 if [ -f "$INSTALL_PATH/bin/openssl" ]; then
-    echo oqs-openssl has already been installed; skipping the build process
+    echo oqs-openssl has already been installed, skipping the build process
     exit
 fi
 
