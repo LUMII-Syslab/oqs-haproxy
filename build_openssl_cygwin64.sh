@@ -27,6 +27,8 @@ export LIBOQS_BUILD_DEFINES="-DOQS_DIST_BUILD=ON"
 
 # cloning open-quantum-safe sources
 pushd $BUILD_PATH
+export BUILD_PATH=`pwd`
+# ^^^ converting to full path; it will be passed to "cmake" below
 [ ! -d "openssl" ] && git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe/openssl.git
 [ ! -d "liboqs" ] && git clone --branch main https://github.com/open-quantum-safe/liboqs.git
 popd
