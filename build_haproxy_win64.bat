@@ -30,4 +30,4 @@ popd
 
 :: invoking child scripts (cygwin understands cd in the Windows path syntax; cd is required)
 mkdir %BUILD_PATH%
-echo C:\cygwin64\bin\bash --login -c "cd '%~dp0/build' && ./build_openssl_cygwin64.sh %BUILD_PATH% %INSTALL_PATH%"
+echo C:\cygwin64\bin\bash --login -c "cd '%~dp0' && ./build_openssl_cygwin64.sh %BUILD_PATH% %INSTALL_PATH%"
