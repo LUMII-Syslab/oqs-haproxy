@@ -23,6 +23,8 @@ if [ -z "$4" ]; then
     echo "       (open-quantum-safe openssl must be installed in openssl-install-path)"
     exit
 fi
+
+mkdir -p $HAPROXY_INSTALL_PATH
 if [ -f "$HAPROXY_INSTALL_PATH/sbin/haproxy" ]; then
     echo oqs-haproxy has already been installed, skipping the build process
     exit
